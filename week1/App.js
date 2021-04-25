@@ -1,15 +1,14 @@
-import React from "react"
 
-import Header from "./Header"
-import Button from "./Button"
 
-function App() {
-    return (
-        <div>
-            <Header />
-            <Button />
-        </div>
-    )
-}
+const sumFx = require('./math')
 
-export default App
+console.log(sumFx(9, 3))
+
+const sum2Fx = require('./math')
+console.log(sumFx(10, 2))
+
+const sum3Fx = require('./math')
+console.log(sumFx(4, 2))
+
+const sum4Fx = require('./math')
+console.log(sumFx(9, 3))

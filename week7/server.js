@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+// const morgan = require(morgan);
 // const { v4: uuidv4 } = require('uuid');
 
 const bookRouter = require('./routes/bookRouter');
@@ -18,6 +19,7 @@ app.use(express.json())
 
 
 app.use('/books', bookRouter)
+// app.use(morgan('dev'))
 
 // Post
 // app.post('/books', (req, res) => {

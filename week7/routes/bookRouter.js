@@ -34,7 +34,7 @@ bookRouter.post('/', (req, res) => {
     books.push(newBook);
 
     console.log(books)
-    res.send('Successfully added ${newBook.title} to the database');
+    res.send(newBook);
 })
 
 bookRouter.delete('/:bookId', (req, res) => {

@@ -16,12 +16,6 @@ app.use(express.json())
 //     {title: 'Moby Dick', author: 'Herman Melville', _id: uuidv4() },
 // ];
 
-// let tvShows = [
-// {title: 'Hey Arnold', channel: 'Nickelodeon', _id: uuidv4() },
-// {title: 'Family Guy', channel: 'Fox', _id: uuidv4() },
-// {title: 'The Office', channel: 'Tbs', _id: uuidv4() },
-// {title: 'Eric Andre Show', channel: 'Cartoon Network', _id: uuidv4() },    
-// ]
 
 app.use('/books', bookRouter)
 
@@ -39,9 +33,7 @@ app.use('/books', bookRouter)
 //     res.send(books)
 // });
 
-// app.get('/tv-shows', (req, res) => {
-//     res.send
-// })
+
 
 app.listen(PORT, () => {
     console.log('App started on port: ${PORT}')

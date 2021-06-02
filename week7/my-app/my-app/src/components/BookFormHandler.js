@@ -1,8 +1,9 @@
 import {useState} from 'react'
+// import { propfind } from '../../../../routes/bookRouter';
 
-function AddBookForm({addBooks}){
-    const initialInputs = { title: '', genre: ''};
-    const [inputs, setInputs] = useState(initInputs);
+function BookFormHandler({ submit, btnText, title, genre, _id }){
+    const initialInputs = { title: title || '', genre: genre || ''};
+    const [inputs, setInputs] = useState(initialInputs);
     
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -11,7 +12,7 @@ function AddBookForm({addBooks}){
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        addBooks(inputs);
+        submit(inputs, _id);
         setInputs(initialInputs);
     }
 
@@ -22,17 +23,17 @@ function AddBookForm({addBooks}){
                     type='text'
                     name='title'
                     value={inputs.title}
-                    onChange={}
+                    onChange={handleChange}
                     placeholder='Title'/>
                 <input 
                     type='text'
                     name='genre'
                     value={inputs.genre}
-                    onChange={}
+                    onChange={handleChange}
                     placeholder='Genre'/>
                     <button>Add Book</button>
         </form>
     )
 }
 
-export default AddBookForm;
+export default BookFormHandler;

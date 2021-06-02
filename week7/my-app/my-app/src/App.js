@@ -3,7 +3,7 @@ import axios from 'axios'
 // import logo from './logo.svg';
 import './App.css';
 import Book from './components/Book'
-import AddBookForm from './components/AddBookForm'
+import BookFormHandler from './components/BookFormHandler'
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -22,15 +22,33 @@ function App() {
     .catch(err => console.log(err))
   };
 
+  const deleteBook = (bookID) => {
+    axios.delete(`/books/${bookID}`)
+    .then(res => {
+      setBooks(prevBooks => prevBooks.filter(book => book._id !== bookID))
+    })
+    .catch(err => console.log(err))
+  }
+
+  const editBook = (updates, bookId) => {
+    axios.put(`/books/${bookId}`, updates)
+    .then(res => {
+      setBooks(prevBooks => prevBooks.map(book => book._id !== bookId ? book : res.data))
+    })
+    .catch(err => console.log(err))
+  }
+
   useEffect(() => {
     getBooks();
   }, []);
 
-const booksList = books.map(book => <Book {...book} key={book.title}/>)
+const booksList = books.map(book => <Book {...book} deleteBook={deleteBook} editBook={editBook} key={book.title}/>)
 
   return (
     <div className='book-container'>
-      <AddBookForm addBook={addBook}/>
+      <BookFormHandler 
+      btnText='Add Book'
+      submit={addBook}/>
       {booksList}
     </div>
   );

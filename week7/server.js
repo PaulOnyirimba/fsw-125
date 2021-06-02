@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-// const morgan = require(morgan);
+const morgan = require('morgan');
 // const { v4: uuidv4 } = require('uuid');
 
 const bookRouter = require('./routes/bookRouter');
@@ -8,6 +8,7 @@ const bookRouter = require('./routes/bookRouter');
 const PORT = 7000;
 
 app.use(express.json())
+app.use(morgan('dev'))
 
 
 // let books = [
@@ -18,7 +19,7 @@ app.use(express.json())
 // ];
 
 
-app.use('/books', bookRouter)
+app.use('/books', require('./routes/bookRouter'))
 // app.use(morgan('dev'))
 
 // Post
